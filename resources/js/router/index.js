@@ -1,4 +1,4 @@
-import {createWebHistory, createRouter} from "vue-router";
+import { createWebHistory, createRouter } from "vue-router";
 
 import Home from '../pages/Home';
 import About from '../pages/About';
@@ -6,12 +6,20 @@ import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 
+
+
 import Books from '../components/Books';
 import AddBook from '../components/AddBook';
 import EditBook from '../components/EditBook';
 
-export const routes = [
-    {
+
+
+
+// NEWLY EDITED FOR ADMIN DASHBOARD
+import AdminDashboard from '../admin/AdminDashboard';
+import SettingForm from '../admin/setting/SettingForm';
+
+export const routes = [{
         name: 'home',
         path: '/',
         component: Home
@@ -32,8 +40,8 @@ export const routes = [
         component: Login
     },
     {
-        name: 'dashboard',
-        path: '/dashboard',
+        name: 'user-home',
+        path: '/user/home',
         component: Dashboard
     },
     {
@@ -50,6 +58,17 @@ export const routes = [
         name: 'editbook',
         path: '/books/edit/:id',
         component: EditBook
+    },
+    {
+        name: 'admin-home',
+        path: '/admin/home',
+        component: AdminDashboard,
+    },
+    {
+        name: 'admin-setting',
+        path: '/admin/setting',
+        component: SettingForm,
+
     },
 ];
 

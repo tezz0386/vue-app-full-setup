@@ -1,15 +1,19 @@
 <template>
     <div>
-        Welcome {{ name }}
+        <frontend-header :isLoggedIn="true"/>
+        Welcome {{ name }} to User Dashboard
     </div>
 </template>
 
 <script>
+import FrontendHeader from '../frontend/shared/FrontendHeader.vue';
 export default {
+  components: { FrontendHeader },
     name: "Dashboard",
     data() {
         return {
             name: null,
+            isLoggedin:false,
         }
     },
     created() {
@@ -20,6 +24,9 @@ export default {
     beforeRouteEnter(to, from, next) {
         if (!window.Laravel.isLoggedin) {
             window.location.href = "/";
+        }
+        if (window.Laravel.user.role == 'admin') {
+            window.location.href = "/admin/home";
         }
         next();
     }

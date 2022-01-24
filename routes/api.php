@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Admin\Setting\SettingController;
 use App\Http\Controllers\API\BookController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
@@ -14,4 +15,8 @@ Route::group(['prefix' => 'books', 'middleware' => 'auth:sanctum'], function () 
     Route::get('edit/{id}', [BookController::class, 'edit']);
     Route::post('update/{id}', [BookController::class, 'update']);
     Route::delete('delete/{id}', [BookController::class, 'delete']);
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function () {
+    Route::apiResource('setting', SettingController::class)->except(['show', 'destroy', 'index']);
 });

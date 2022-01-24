@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use Session;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -69,8 +69,10 @@ class UserController extends Controller
      */
     public function logout()
     {
+        // Session::flush();
         try {
-            Session::flush();
+            // Session::flush();
+            Auth::guard('web')->logout();
             $success = true;
             $message = 'Successfully logged out';
         } catch (\Illuminate\Database\QueryException $ex) {
