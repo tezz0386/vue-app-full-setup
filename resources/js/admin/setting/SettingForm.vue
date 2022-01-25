@@ -2,7 +2,7 @@
   <div class="wrapper">
     <admin-header />
 
-    <sidebar :activePage="this.activePage" />
+    <sidebar :activePage="this.activePage" :name="this.name"/>
 
     <div class="content-wrapper">
       <breadcrumb />
@@ -293,15 +293,14 @@ export default {
       this.name = window.Laravel.user.name;
     }
      this.$axios.get('/sanctum/csrf-cookie').then(response => {
-              this.$axios.get('/api/admin/setting')
-              .then(response=>{
-                console.log(this.setting);
-                this.setting = response.setting;
-              })
-              .catch(error=>{
-                console.log(error);
-              });
-     });
+            this.$axios.get('/api/v1/admin/setting')
+                .then(response => {
+                    this.setting = response.data.setting;
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+      });
   },
   beforeRouteEnter(to, from, next) {
     if (!window.Laravel.isLoggedin) {
@@ -332,9 +331,10 @@ export default {
     formData.append('title_tag', this.setting.title_tag);
     formData.append('meta_keywords', this.setting.meta_keywords);
     formData.append('meta_description', this.setting.meta_description);
+    // formData.append('_method', 'PATCH');
 
         this.$axios.get('/sanctum/csrf-cookie').then(response => {
-              this.$axios.post('/api/admin/setting', formData)
+            this.$axios.patch('/v1/api/admin/setting/1', formData)
         .then(response=>{
           console.log(response);
         })

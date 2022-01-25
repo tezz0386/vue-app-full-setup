@@ -27,7 +27,7 @@
           />
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{name}}</a>
         </div>
       </div>
 
@@ -561,6 +561,7 @@ a{
 export default {
   props:{
     activePage:'',
+    name:null,
   }
 };
 </script>

@@ -17,6 +17,9 @@ Route::group(['prefix' => 'books', 'middleware' => 'auth:sanctum'], function () 
     Route::delete('delete/{id}', [BookController::class, 'delete']);
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function () {
-    Route::apiResource('setting', SettingController::class)->except(['show', 'destroy', 'index']);
+Route::group(['prefix'=>'v1'], function(){
+    Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function () {
+        Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
+        Route::patch('/setting/{setting}', [SettingController::class, 'update'])->name('setting.update');
+    });    
 });

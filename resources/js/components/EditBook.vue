@@ -28,7 +28,7 @@ export default {
     },
     created() {
         this.$axios.get('/sanctum/csrf-cookie').then(response => {
-            this.$axios.get(`/api/books/edit/${this.$route.params.id}`)
+            this.$axios.get('/api/books/edit/${this.$route.params.id}')
                 .then(response => {
                     this.book = response.data;
                 })
@@ -40,7 +40,7 @@ export default {
     methods: {
         updateBook() {
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
-                this.$axios.post(`/api/books/update/${this.$route.params.id}`, this.book)
+                this.$axios.post('/api/books/update/${this.$route.params.id}', this.book)
                     .then(response => {
                         this.$router.push({name: 'books'});
                     })

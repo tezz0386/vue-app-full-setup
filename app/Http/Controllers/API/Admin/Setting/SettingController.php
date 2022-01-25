@@ -29,6 +29,10 @@ class SettingController extends Controller
     public function index()
     {
         //
+        $setting = Setting::find(1);
+        $this->data['message']='Setting';
+        $this->data['setting']=$setting;
+        return response()->json($this->data);
     }
 
     /**
