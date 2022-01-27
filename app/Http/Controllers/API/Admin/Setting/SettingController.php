@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Setting\Setting;
 use App\Support\ImageSupport;
 use Illuminate\Support\Facades\Validator;
+use Auth;
 
 class SettingController extends Controller
 {
@@ -114,6 +115,8 @@ class SettingController extends Controller
     public function update(Request $request, Setting $setting)
     {
         //
+        // return $request;
+        // return $setting;
         $input = $request->all();
         $validator = Validator::make($input, [
             'name'=>'required',
@@ -128,8 +131,10 @@ class SettingController extends Controller
         if($validator->fails()){
             return response()->json($validator->errors(), 403);
         }
+        $input['created_by']=Auth::id();
         $this->setting->update($input);
         $this->data['message']='Successfully Setting Updated';
+        $this->data['setting']=$this->setting;
         return response()->json($this->data, 200);
     }
 

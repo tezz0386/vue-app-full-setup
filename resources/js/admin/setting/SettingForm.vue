@@ -331,22 +331,17 @@ export default {
     formData.append('title_tag', this.setting.title_tag);
     formData.append('meta_keywords', this.setting.meta_keywords);
     formData.append('meta_description', this.setting.meta_description);
-    // formData.append('_method', 'PATCH');
-
-        this.$axios.get('/sanctum/csrf-cookie').then(response => {
-            this.$axios.patch('/v1/api/admin/setting/1', formData)
-        .then(response=>{
-          console.log(response);
-        })
-        .catch(error=>{
-          console.log(error)
-        })
-        .finally(()=>this.load=false);
-    });
-
-
-
-
+    formData.append('_method', 'PATCH');
+            this.$axios.get('/sanctum/csrf-cookie').then(response => {
+                this.$axios.post('http://127.0.0.1:8000/api/v1/admin/setting/'+this.setting.id, formData)
+                    .then(response => {
+                      this.setting=response.data.setting;
+                      console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.error(error);
+                    });
+            })
    },
 
   },
