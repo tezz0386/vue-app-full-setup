@@ -33,7 +33,7 @@ class SettingController extends Controller
         $setting = Setting::find(1);
         $this->data['message']='Setting';
         $this->data['setting']=$setting;
-        return response()->json($this->data);
+        return response()->json($this->data, 200);
     }
 
     /**
@@ -69,11 +69,11 @@ class SettingController extends Controller
             'p_email'=>'required',
             'm_no'=>'required',
         ]);
-        if(!$request->file('logo')==''){
-            $input['logo']=$this->imageSupport->saveAnyImg($request, 'settings', 'logo', $this->imageWidth, $this->imageHeight);
-        }
         if($validator->fails()){
             return response()->json($validator->errors(), 403);
+        }
+        if(!$request->file('logo')==''){
+            $input['logo']=$this->imageSupport->saveAnyImg($request, 'settings', 'logo', $this->imageWidth, $this->imageHeight);
         }
         $this->setting->create($input);
         $this->data['message']='Successfully Setting Created';
@@ -125,7 +125,7 @@ class SettingController extends Controller
         ]);
         if(!$request->file('logo')==''){
             $this->imageSupport->deleteImg('setting', $setting->logo);
-            $input['logo']=$this->imageSupport->saveAnyImg($request, 'settings', 'logo', $this->imageWidth, $this->imageHeight);
+            $input['logo']= $this->imageSupport->saveAnyImg($request, 'settings', 'logo', 500, 500);
         }
         $this->setting=$setting;
         if($validator->fails()){

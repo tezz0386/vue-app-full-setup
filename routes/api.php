@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Admin\Banner\BannerController;
 use App\Http\Controllers\API\Admin\Setting\SettingController;
 use App\Http\Controllers\API\BookController;
 use App\Http\Controllers\API\UserController;
@@ -21,5 +22,9 @@ Route::group(['prefix'=>'v1'], function(){
     Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function () {
         Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
         Route::patch('/setting/{setting}', [SettingController::class, 'update'])->name('setting.update');
-    });    
+
+
+        // FOR BANNER
+        Route::apiResource('banner', BannerController::class);
+    }); 
 });

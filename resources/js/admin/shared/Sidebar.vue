@@ -57,57 +57,26 @@
               </p>
             </router-link>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" :class="{ 'menu-open' : page=='banner'}">
+            <a href="#" class="nav-link" :class="{ active : page=='banner'}">
               <i class="nav-icon nav-sm fas fa-copy"></i>
               <p>
-                Layout Options
+                Banners
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <router-link to="/admin/banner/create" class="nav-link" :class="{active: activePage=='banner_create'}">
                   <i class="far fa-circle nav-icon nav-sm"></i>
-                  <p>Top Navigation</p>
-                </a>
+                  <p>Create New</p>
+                </router-link>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                <router-link to="/admin/banner"  class="nav-link" :class="{active: activePage=='banner_list'}">
                   <i class="far fa-circle nav-icon nav-sm"></i>
-                  <p>Top Navigation + Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon nav-sm"></i>
-                  <p>Boxed</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon nav-sm"></i>
-                  <p>Fixed Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon nav-sm"></i>
-                  <p>Fixed Navbar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                  <i class="far fa-circle nav-icon nav-sm"></i>
-                  <p>Fixed Footer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon nav-sm"></i>
-                  <p>Collapsed Sidebar</p>
-                </a>
+                  <p>Banner List</p>
+                </router-link>
               </li>
             </ul>
           </li>
@@ -561,6 +530,7 @@ a{
 export default {
   props:{
     activePage:'',
+    page:'',
     name:null,
   }
 };

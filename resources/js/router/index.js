@@ -19,6 +19,13 @@ import EditBook from '../components/EditBook';
 import AdminDashboard from '../admin/AdminDashboard';
 import SettingForm from '../admin/setting/SettingForm';
 
+
+// FOR BANNER
+import BannerCreate from '../admin/banner/BannerCreate';
+import BannerEdit from '../admin/banner/BannerEdit';
+import BannerList from '../admin/banner/BannerList';
+
+
 export const routes = [{
         name: 'home',
         path: '/',
@@ -70,6 +77,21 @@ export const routes = [{
         component: SettingForm,
 
     },
+    {
+        name: 'banner-create',
+        path: '/admin/banner/create',
+        component: BannerCreate,
+    },
+    // {
+    //     name: 'banner-edit',
+    //     path: '/admin/banner/:id',
+    //     component: BannerEdit,
+    // },
+    {
+        name: 'banner-list',
+        path: '/admin/banner',
+        component: BannerList,
+    }
 ];
 
 const router = createRouter({
