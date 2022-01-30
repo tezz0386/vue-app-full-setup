@@ -398,17 +398,25 @@ export default {
       this.$axios.get("/sanctum/csrf-cookie").then((response) => {
         this.$axios
           .post(
-            window.Laravel.base_url+"admin/setting/" + this.setting.id,
+            window.Laravel.base_url + "admin/setting/" + this.setting.id,
             formData
           )
           .then((response) => {
             this.setting = response.data.setting;
             console.log(response);
-            this.$toast.success("Successfully Updated");
+            this.$swal.fire({
+              icon: "success",
+              title: "Success !!!",
+              text: "Successfully Saved/Updated",
+            });
           })
           .catch(function (error) {
             console.error(error);
-            this.$toast.error("Could not be Updated");
+            this.$swal.fire({
+              icon: "error",
+              title: "Oppppsss ....!!!",
+              text: "Could not be updated",
+            });
           });
       });
     },

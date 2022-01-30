@@ -254,10 +254,21 @@ export default {
             this.banner = response.data.banner;
             console.log(response);
             this.$Progress.finish()
+            this.$swal.fire({
+              icon:'success',
+              title: 'Success !!!',
+              text: 'Successfully Updated',
+            });
             this.$router.replace('/admin/banner');
           })
           .catch(function (error) {
             console.error(error);
+            this.$swal.fire({
+              icon:'error',
+              title: 'Oppss !!!',
+              text: 'Could not be updated',
+              footer: '<a href="">Why do I have this issue?</a>',
+            });
           });
       });
     },

@@ -117,7 +117,7 @@
                       v-model="this.banner.status"
                       class="form-control form-control-sm"
                     >
-                      <option value="active">Active</option>
+                      <option value="active" :selected="true">Active</option>
                       <option value="inactive">Inactive</option>
                     </select>
                   </div>
@@ -241,10 +241,21 @@ export default {
             console.log(response.data.message);
             console.log(response);
             this.$Progress.finish();
+            this.$swal.fire({
+              icon:'success',
+              title:'Success !!!',
+              text:'Successfully Saved',
+            });
             this.$router.replace('/admin/banner');
           })
           .catch(function (error) {
             console.error(error);
+            this.$swal.fire({
+              icon:'error',
+              title:'Oppss... !!!',
+              text:'Could not Saved',
+              footer: '<a href="">Why do I have this issue?</a>',
+            });
           });
       });
     },
