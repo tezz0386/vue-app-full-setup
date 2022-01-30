@@ -25,6 +25,9 @@
         "vue-loader": "^16.1.2"
     },
     "dependencies": {
+        "@aacassandra/vue3-progressbar": "^1.0.3",
+        "@incuca/vue3-toaster": "^1.1.1",
+        "stylus-loader": "^3.0.2",
         "vue": "^3.0.5",
         "vue-router": "^4.0.3"
     }

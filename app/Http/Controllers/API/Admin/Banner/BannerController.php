@@ -30,6 +30,8 @@ class BannerController extends Controller
     {
         //
         $this->data['banners']=Banner::orderBy('order', 'asc')->get();
+        $this->data['message']='Banner List';
+        return response()->json($this->data, 200);
     }
 
     /**
@@ -51,6 +53,7 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         //
+        // return $request;
         $input = $request->all();
         $validator= Validator::make($input, [
             'title'=>'required',
@@ -61,7 +64,7 @@ class BannerController extends Controller
         if($validator->fails()){
             return response()->json($validator->errors());
         }
-        $input['image']= $this->imageSupport->saveAnyImg($request, 'banners', 'image', 1200, 700);
+        $input['image']=$this->imageSupport->saveAnyImg($request, 'banners', 'image', $this->imageWidth, $this->imageHeight);
         $this->banner->create($input);
         $this->data['message']='Successfully Created';
         $this->data['banner']=$this->banner;
@@ -77,6 +80,9 @@ class BannerController extends Controller
     public function show(Banner $banner)
     {
         //
+        $this->data['message']='Banner For Edit';
+        $this->data['banner']=$banner;
+        return response()->json($this->data, 200);
     }
 
     /**
@@ -90,6 +96,7 @@ class BannerController extends Controller
         //
         $this->data['message']='Banner For Edit';
         $this->data['banner']=$banner;
+        return response()->json($this->data, 200);
     }
 
     /**
@@ -102,18 +109,19 @@ class BannerController extends Controller
     public function update(Request $request, Banner $banner)
     {
         //
+        // return $request;
         $this->banner=$banner;
         $input = $request->all();
         $validator= Validator::make($input, [
             'title'=>'required',
-            'image'=>'sometimes|mimes:jpg,png,jpeg',
+            // 'image'=>'sometimes|mimes:jpg,png,jpeg',
             'btn_text'=>'required',
             'url'=>'required',
         ]);
         if($validator->fails()){
             return response()->json($validator->errors());
         }
-        if(!$request->file('imae')==''){
+        if(!$request->file('image')==''){
             $this->imageSupport->deleteImg('banners', $banner->image);
             $input['image']=$this->imageSupport->saveAnyImg($request, 'banners', 'image', $this->imageWidth, $this->imageHeight);
         }

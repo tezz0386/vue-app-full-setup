@@ -853,9 +853,11 @@ export default {
         }
     },
     created() {
+      this.$Progress.start();
         if (window.Laravel.user) {
             this.name = window.Laravel.user.name
         }
+        this.$Progress.finish();
     },
     beforeRouteEnter(to, from, next) {
         if (!window.Laravel.isLoggedin) {

@@ -82,11 +82,11 @@ export const routes = [{
         path: '/admin/banner/create',
         component: BannerCreate,
     },
-    // {
-    //     name: 'banner-edit',
-    //     path: '/admin/banner/:id',
-    //     component: BannerEdit,
-    // },
+    {
+        name: 'banner-edit',
+        path: '/admin/banner/:id',
+        component: BannerEdit,
+    },
     {
         name: 'banner-list',
         path: '/admin/banner',

@@ -20,7 +20,8 @@ class CreateBannersTable extends Migration
             $table->string('url');
             $table->string('btn_text');
             $table->integer('order')->nullable();
-            $table->enum('stutus', ['active', 'inactive']);
+            $table->string('image');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }

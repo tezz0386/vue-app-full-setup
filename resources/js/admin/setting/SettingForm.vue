@@ -303,6 +303,7 @@ export default {
     };
   },
   created() {
+    this.$Progress.start();
     if (window.Laravel.user) {
       this.name = window.Laravel.user.name;
     }
@@ -316,6 +317,7 @@ export default {
               "/uploads/settings/thumbnail/" + this.setting.logo;
             this.showPreview = true;
           }
+          this.$Progress.finish();
         })
         .catch(function (error) {
           console.error(error);
@@ -396,15 +398,17 @@ export default {
       this.$axios.get("/sanctum/csrf-cookie").then((response) => {
         this.$axios
           .post(
-            "http://127.0.0.1:8000/api/v1/admin/setting/" + this.setting.id,
+            window.Laravel.base_url+"admin/setting/" + this.setting.id,
             formData
           )
           .then((response) => {
             this.setting = response.data.setting;
             console.log(response);
+            this.$toast.success("Successfully Updated");
           })
           .catch(function (error) {
             console.error(error);
+            this.$toast.error("Could not be Updated");
           });
       });
     },

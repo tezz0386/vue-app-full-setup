@@ -37,7 +37,9 @@
     <script>
         window.Laravel = {!!json_encode([
                'isLoggedin' => true,
-               'user' => Auth::user()
+               'user' => Auth::user(),
+               'setting'=>$setting,
+               'base_url'=>'http://127.0.0.1:8000/api/v1/',
            ])!!}
     </script>
 @else

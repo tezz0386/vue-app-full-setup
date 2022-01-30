@@ -43,7 +43,7 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label for="name">Choose Logo:</label>
+                    <label for="name">Choose Image:</label>
                     <input
                       type="file"
                       name="image"
@@ -161,9 +161,12 @@ export default {
     };
   },
   created() {
+    this.$Progress.start();
     if (window.Laravel.user) {
       this.name = window.Laravel.user.name;
     }
+    this.banner.status='Active';
+    this.$Progress.finish();
   },
   beforeRouteEnter(to, from, next) {
     if (!window.Laravel.isLoggedin) {
@@ -219,23 +222,26 @@ export default {
       }
     },
     addBanner() {
+      this.$Progress.start()
       let formData = new FormData();
       formData.append("image", this.banner.image);
       formData.append('title', this.banner.title);
       formData.append('url', this.banner.url);
       formData.append('content', this.banner.content);
       formData.append('btn_text', this.banner.btn_text);
-      console.log(formData);
+      formData.append('status', this.banner.status);
       this.$axios.get("/sanctum/csrf-cookie").then((response) => {
         this.$axios
           .post(
-            "http://127.0.0.1:8000/api/v1/admin/banner",
+            window.Laravel.base_url+"admin/banner",
             formData
           )
           .then((response) => {
             this.banner={};
             console.log(response.data.message);
             console.log(response);
+            this.$Progress.finish();
+            this.$router.replace('/admin/banner');
           })
           .catch(function (error) {
             console.error(error);

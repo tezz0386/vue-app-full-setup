@@ -532,6 +532,6 @@ export default {
     activePage:'',
     page:'',
     name:null,
-  }
+  },
 };
 </script>
