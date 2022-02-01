@@ -20382,15 +20382,17 @@ __webpack_require__.r(__webpack_exports__);
     draggable: (vuedraggable__WEBPACK_IMPORTED_MODULE_4___default())
   },
   name: "BannerList",
+  display: "Table",
+  order: 8,
   data: function data() {
     return {
-      banners: {},
+      banners: [],
       name: null,
       activePage: "banner_list",
       page: "banner",
       imagePreview: null,
       showPreview: false,
-      drag: false
+      dragging: false
     };
   },
   created: function created() {
@@ -20467,6 +20469,36 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
+    },
+    onAdd: function onAdd(event, status) {// let id = event.item.getAttribute('data-id');
+      // axios.patch('/demos/tasks/' + id, {
+      //     status: status
+      // }).then((response) => {
+      //     console.log(response.data);
+      // }).catch((error) => {
+      //     console.log(error);
+      // })
+    },
+    update: function update() {
+      var _this3 = this;
+
+      this.banners.map(function (banners, index) {
+        banners.order = index + 1;
+      });
+      this.banners.map(function (banners, index) {
+        banners.order = index + 1;
+      });
+      var banners = this.banners.concat(this.tasksCompletedNew);
+      this.$axios.get('/snactum/csrf-cookie').then(function (response) {
+        _this3.$axios.patch(window.Laravel.base_url + 'admin/update-order/banner', {
+          banners: banners
+        }).then(function (response) {
+          console.log(response.data);
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      });
+      console.log(this.banners);
     }
   }
 });
@@ -22395,19 +22427,23 @@ var _hoisted_6 = {
   "class": "table"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "#"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Thumb"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Created At"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Status"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "#"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Order"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Thumb"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Created At"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Status"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
   colspan: "2"
 }, "Action")])], -1
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+var _hoisted_8 = {
+  scope: "row"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
   "class": "fa fa-edit"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("footer", null, null, -1
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("footer", null, null, -1
 /* HOISTED */
 );
 
@@ -22422,8 +22458,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_draggable = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("draggable");
 
-  var _component_rawDisplayer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("rawDisplayer");
-
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_admin_header), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_sidebar, {
     activePage: this.activePage,
     page: this.page,
@@ -22436,11 +22470,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.banners = $event;
     }),
     tag: "tbody",
-    "item-key": "name"
+    "item-key": "title",
+    onAdd: _cache[2] || (_cache[2] = function ($event) {
+      return $options.onAdd($event, false);
+    }),
+    onChange: $options.update
   }, {
     item: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref) {
       var element = _ref.element;
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.index + _ctx.i), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(element.id), 1
+      /* TEXT */
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(element.order), 1
       /* TEXT */
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(element.title), 1
       /* TEXT */
@@ -22464,7 +22504,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_8];
+          return [_hoisted_9];
         }),
         _: 2
         /* DYNAMIC */
@@ -22485,13 +22525,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_rawDisplayer, {
-    "class": "col-3",
-    value: this.banners,
-    title: "List"
-  }, null, 8
-  /* PROPS */
-  , ["value"])])])])]), _hoisted_9]);
+  , ["modelValue", "onChange"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <rawDisplayer class=\"col-3\" :value=\"this.banners\" title=\"List\" /> ")])])])]), _hoisted_10]);
 }
 
 /***/ }),

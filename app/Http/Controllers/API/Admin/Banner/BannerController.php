@@ -144,4 +144,23 @@ class BannerController extends Controller
         $banner->delete();
         return response()->json($this->data);
     }
+    public function updateOrder(Request $request)
+    {
+        $this->validate($request, [
+            'tasks.*.order' => 'required|numeric',
+        ]);
+
+        $tasks = Banner::all();
+        $banners = $request->banners;
+        $count = count($banners);
+        foreach ($tasks as $task) {
+            $id = $task->id;
+            for($i=0; $i<$count-1; $i++){
+                if ($banners[$i]['id'] == $id) {
+                    $task->update(['order' => $banners[$i]['order']]);
+                }
+            }
+        }
+        return response('Updated Successfully.', 200);
+    }
 }

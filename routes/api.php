@@ -26,5 +26,6 @@ Route::group(['prefix'=>'v1'], function(){
 
         // FOR BANNER
         Route::apiResource('banner', BannerController::class);
+        Route::patch('/update-order/banner', [BannerController::class, 'updateOrder'])->name('update-order.banner');
     }); 
 });

@@ -836,11 +836,6 @@
   "resolved" "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz"
   "version" "0.5.2"
 
-"@incuca/vue3-toaster@^1.1.1":
-  "integrity" "sha512-c9HgTeap6nyO2+kIb/jftHj76mcnDgGkwLHXcYg1M+IPqxRsPEKlWJLo+rLWcXna2vRpv0Y0Vo+++i4SuKUESA=="
-  "resolved" "https://registry.npmjs.org/@incuca/vue3-toaster/-/vue3-toaster-1.1.1.tgz"
-  "version" "1.1.1"
-
 "@nodelib/fs.scandir@2.1.4":
   "integrity" "sha512-33g3pMJk3bg5nXbL/+CY6I2eJDzZAni49PfJnL5fghPTggPvBd/pFNSgJsdAgWptuFu7qq/ERvOYFlhvsLTCKA=="
   "resolved" "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz"
@@ -2405,15 +2400,6 @@
     "source-map-resolve" "^0.5.2"
     "urix" "^0.1.0"
 
-"css@^3.0.0":
-  "integrity" "sha512-DG9pFfwOrzc+hawpmqX/dHYHJG+Bsdb0klhyi1sDneOgGOXy9wQIC8hzyVp1e4NRYDBdxcylvywPkkXCHAzTyQ=="
-  "resolved" "https://registry.npmjs.org/css/-/css-3.0.0.tgz"
-  "version" "3.0.0"
-  dependencies:
-    "inherits" "^2.0.4"
-    "source-map" "^0.6.1"
-    "source-map-resolve" "^0.6.0"
-
 "cssesc@^3.0.0":
   "integrity" "sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg=="
   "resolved" "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz"
@@ -2531,13 +2517,6 @@
   "integrity" "sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ=="
   "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.1.tgz"
   "version" "4.3.1"
-  dependencies:
-    "ms" "2.1.2"
-
-"debug@^4.3.2":
-  "integrity" "sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q=="
-  "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.3.tgz"
-  "version" "4.3.3"
   dependencies:
     "ms" "2.1.2"
 
@@ -6001,7 +5980,7 @@
   dependencies:
     "ret" "~0.1.10"
 
-"safer-buffer@^2.1.0", "safer-buffer@^2.1.2", "safer-buffer@>= 2.1.2 < 3":
+"safer-buffer@^2.1.0", "safer-buffer@>= 2.1.2 < 3":
   "integrity" "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
   "resolved" "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
   "version" "2.1.2"
@@ -6259,6 +6238,11 @@
     "uuid" "^3.4.0"
     "websocket-driver" "^0.7.4"
 
+"sortablejs@1.14.0":
+  "integrity" "sha512-pBXvQCs5/33fdN1/39pPL0NZF20LeRbLQ5jtnheIPN9JQAaufGjKdWduZn4U7wCtVuzKhmRkI0DFYHYRbB2H1w=="
+  "resolved" "https://registry.npmjs.org/sortablejs/-/sortablejs-1.14.0.tgz"
+  "version" "1.14.0"
+
 "source-list-map@^2.0.0", "source-list-map@^2.0.1":
   "integrity" "sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw=="
   "resolved" "https://registry.npmjs.org/source-list-map/-/source-list-map-2.0.1.tgz"
@@ -6274,14 +6258,6 @@
     "resolve-url" "^0.2.1"
     "source-map-url" "^0.4.0"
     "urix" "^0.1.0"
-
-"source-map-resolve@^0.6.0":
-  "integrity" "sha512-KXBr9d/fO/bWo97NXsPIAW1bFSBOuCnjbNTBMO7N59hsv5i9yzRDfcYwwt0l04+VqnKC+EwzvJZIP/qkuMgR/w=="
-  "resolved" "https://registry.npmjs.org/source-map-resolve/-/source-map-resolve-0.6.0.tgz"
-  "version" "0.6.0"
-  dependencies:
-    "atob" "^2.1.2"
-    "decode-uri-component" "^0.2.0"
 
 "source-map-support@~0.5.12", "source-map-support@~0.5.19":
   "integrity" "sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw=="
@@ -6315,11 +6291,6 @@
   "integrity" "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g=="
   "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
   "version" "0.6.1"
-
-"source-map@^0.7.3":
-  "integrity" "sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ=="
-  "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.7.3.tgz"
-  "version" "0.7.3"
 
 "source-map@~0.7.2":
   "integrity" "sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ=="
@@ -6478,18 +6449,6 @@
     "lodash.clonedeep" "^4.5.0"
     "when" "~3.6.x"
 
-"stylus@>=0.52.4":
-  "integrity" "sha512-Ev3fOb4bUElwWu4F9P9WjnnaSpc8XB9OFHSFZSKMFL1CE1oM+oFXWEgAqPmmZIyhBihuqIQlFsVTypiiS9RxeA=="
-  "resolved" "https://registry.npmjs.org/stylus/-/stylus-0.56.0.tgz"
-  "version" "0.56.0"
-  dependencies:
-    "css" "^3.0.0"
-    "debug" "^4.3.2"
-    "glob" "^7.1.6"
-    "safer-buffer" "^2.1.2"
-    "sax" "~1.2.4"
-    "source-map" "^0.7.3"
-
 "supports-color@^5.3.0":
   "integrity" "sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow=="
   "resolved" "https://registry.npmjs.org/supports-color/-/supports-color-5.5.0.tgz"
@@ -6536,6 +6495,11 @@
     "stable" "^0.1.8"
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"
+
+"sweetalert2@11.x":
+  "integrity" "sha512-/3nhG5QCREkPUndAbOF9h1IM7lgCIU/evsNXd/YUfa9eJ04M+hxksxIio8hhtH16UnWd2GvJ+zvFQ8H9hLRhsw=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.3.10.tgz"
+  "version" "11.3.10"
 
 "tapable@^2.1.1", "tapable@^2.2.0":
   "integrity" "sha512-FBk4IesMV1rBxX2tfiK8RAmogtWn53puLOQlvO8XuwlgxcYbP4mVPS9Ph4aeamSyyVjOl24aYWAuc8U5kCVwMw=="
@@ -6853,7 +6817,14 @@
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.0.3.tgz"
   "version" "4.0.3"
 
-"vue@^3.0.0", "vue@^3.0.5", "vue@3.0.5":
+"vue-sweetalert2@^5.0.2":
+  "integrity" "sha512-28pcpmvaFxwoXIUkOWwhZhmsV749jXxha8JicwPoSKyFKR5FhIaZU6UHO5WlUCLIVUI6sAWY6WngK2x/iXYwZg=="
+  "resolved" "https://registry.npmjs.org/vue-sweetalert2/-/vue-sweetalert2-5.0.2.tgz"
+  "version" "5.0.2"
+  dependencies:
+    "sweetalert2" "11.x"
+
+"vue@*", "vue@^3.0.0", "vue@^3.0.1", "vue@^3.0.5", "vue@3.0.5":
   "integrity" "sha512-TfaprOmtsAfhQau7WsomXZ8d9op/dkQLNIq8qPV3A0Vxs6GR5E+c1rfJS1SDkXRQj+dFyfnec7+U0Be1huiScg=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.0.5.tgz"
   "version" "3.0.5"
@@ -6861,6 +6832,13 @@
     "@vue/compiler-dom" "3.0.5"
     "@vue/runtime-dom" "3.0.5"
     "@vue/shared" "3.0.5"
+
+"vuedraggable@^4.1.0":
+  "integrity" "sha512-FU5HCWBmsf20GpP3eudURW3WdWTKIbEIQxh9/8GE806hydR9qZqRRxRE3RjqX7PkuLuMQG/A7n3cfj9rCEchww=="
+  "resolved" "https://registry.npmjs.org/vuedraggable/-/vuedraggable-4.1.0.tgz"
+  "version" "4.1.0"
+  dependencies:
+    "sortablejs" "1.14.0"
 
 "watchpack@^2.0.0":
   "integrity" "sha512-UjgD1mqjkG99+3lgG36at4wPnUXNvis2v1utwTgQ43C22c4LD71LsYMExdWXh4HZ+RmW+B0t1Vrg2GpXAkTOQw=="

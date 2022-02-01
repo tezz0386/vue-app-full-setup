@@ -17,7 +17,6 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Order</th>
                   <th>Title</th>
                   <th>Thumb</th>
                   <th>Created At</th>
@@ -25,11 +24,10 @@
                   <th colspan="2">Action</th>
                 </tr>
               </thead>
-               <draggable v-model="banners" tag="tbody" item-key="title" @add="onAdd($event, false)"  @change="update">
-                <template #item="{ element }" :data-id="element.id">
+               <draggable v-model="banners" tag="tbody" item-key="name">
+                <template #item="{ element }">
                 <tr>
-                  <td scope="row">{{ element.id }}</td>
-                  <td>{{element.order}}</td>
+                  <td>{{ index + i }}</td>
                   <td>
                     {{ element.title }}
                   </td>
@@ -57,7 +55,7 @@
                 </template>
                </draggable>
             </table>
-            <!-- <rawDisplayer class="col-3" :value="this.banners" title="List" /> -->
+            <rawDisplayer class="col-3" :value="this.banners" title="List" />
           </div>
         </div>
       </section>
@@ -75,17 +73,15 @@ import draggable from 'vuedraggable'
 export default {
   components: { AdminHeader, Sidebar, Breadcrumb, Footer, draggable },
   name: "BannerList",
-  display: "Table",
-  order: 8,
   data() {
     return {
-      banners: [],
+      banners: {},
       name: null,
       activePage: "banner_list",
       page: "banner",
       imagePreview: null,
       showPreview: false,
-      dragging: false
+      drag: false,
     };
   },
   created() {
@@ -152,37 +148,6 @@ export default {
         }
       });
     },
-     onAdd(event, status) {
-                // let id = event.item.getAttribute('data-id');
-                // axios.patch('/demos/tasks/' + id, {
-                //     status: status
-                // }).then((response) => {
-                //     console.log(response.data);
-                // }).catch((error) => {
-                //     console.log(error);
-                // })
-            },
-            update() {
-                this.banners.map((banners, index) => {
-                    banners.order = index + 1;
-                });
-
-                this.banners.map((banners, index) => {
-                    banners.order = index + 1;
-                });
-
-                let banners = this.banners.concat(this.tasksCompletedNew);
-                this.$axios.get('/snactum/csrf-cookie').then((response)=>{
-                  this.$axios.patch(window.Laravel.base_url+'admin/update-order/banner', {
-                    banners: banners
-                  }).then((response) => {
-                    console.log(response.data);
-                  }).catch((error) => {
-                    console.log(error);
-                  })
-                });
-                console.log(this.banners);
-            },
   },
 };
 </script>
